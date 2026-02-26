@@ -1,0 +1,57 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Perfil Verdolaga 💚</title>
+</head>
+<body style="font-family: Arial; background-color:#006a2b; color:white; text-align:center; padding-top:50px;">
+
+    <h1>Perfil del Verdolaga 💚⚽</h1>
+
+    <div id="perfil"></div>
+
+    <br>
+    <button onclick="logout()" style="padding:10px 20px; border:none; border-radius:8px;">
+        Cerrar sesión
+    </button>
+
+<script>
+const API = "http://127.0.0.1:5000/api";
+
+const token = localStorage.getItem("token");
+
+if (!token) {
+    alert("Debes iniciar sesión primero 💚");
+    window.location.href = "login.html";
+}
+
+async function cargarPerfil() {
+
+    const response = await fetch(API + "/perfil", {
+        headers: {
+            "Authorization": "Bearer " + token
+        }
+    });
+
+    const data = await response.json();
+
+    if (response.ok) {
+        document.getElementById("perfil").innerHTML = `
+            <h2>${data.nombre}</h2>
+            <p>${data.email}</p>
+        `;
+    } else {
+        document.getElementById("perfil").innerText = "Error al cargar perfil";
+    }
+}
+
+function logout() {
+    localStorage.removeItem("token");
+    window.location.href = "login.html";
+}
+
+cargarPerfil();
+</script>
+
+</body>
+</html>

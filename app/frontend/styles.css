@@ -1,0 +1,284 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: url("img/fondo.jpg") no-repeat center center fixed;
+    background-size: cover;
+}
+
+.overlay {
+    background: rgba(0, 0, 0, 0.6);
+    min-height: 100vh;
+}
+
+/* NAVBAR */
+nav {
+    background-color: #006a2b;
+    color: white;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo-container img {
+    height: 45px;
+}
+
+nav h2 {
+    margin: 0;
+}
+
+nav button {
+    background-color: white;
+    color: #006a2b;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+nav button:hover {
+    background-color: #c8e6c9;
+}
+
+.container {
+    width: 90%;
+    max-width: 600px;
+    margin: 30px auto;
+}
+
+textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    resize: none;
+}
+
+.publicar-btn {
+    background-color: #00c853;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.publicar-btn:hover {
+    background-color: #009624;
+}
+
+.post {
+    background-color: white;
+    padding: 15px;
+    border-radius: 20px;
+    margin-top: 20px;
+    box-shadow: 0px 8px 20px rgba(0,0,0,0.2);
+    animation: fadeIn 0.4s ease-in-out;
+    transition: transform 0.2s ease;
+}
+
+.post:hover {
+    transform: scale(1.02);
+}
+
+.post-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #006a2b;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.autor {
+    font-weight: bold;
+    color: #006a2b;
+}
+
+.fecha {
+    font-size: 12px;
+    color: gray;
+}
+
+.contenido {
+    margin-top: 10px;
+}
+
+.acciones {
+    margin-top: 10px;
+    display: flex;
+    gap: 10px;
+}
+
+.acciones button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #006a2b;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+}
+
+.bottom-nav button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* SECCION JUGADORES */
+.jugadores-section {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.jugadores-section h2 {
+    color: white;
+    margin-bottom: 20px;
+}
+
+.info-club {
+    background-color: rgba(0,0,0,0.7);
+    padding: 20px;
+    text-align: center;
+    color: white;
+}
+
+/* LEYENDAS */
+.leyenda {
+    border: 3px solid gold;
+    background: linear-gradient(180deg, #00c853, #004d1a);
+}
+
+.cards-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.card {
+    width: 230px;
+    border-radius: 20px;
+    padding: 20px;
+    color: white;
+    box-shadow: 0px 12px 30px rgba(0,0,0,0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0px 18px 40px rgba(0,0,0,0.7);
+}
+
+.player-img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    border-radius: 15px;
+    margin-bottom: 15px;
+}
+
+.posicion {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.stats {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.stats span {
+    background: white;
+    color: #006a2b;
+    padding: 5px 8px;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+/* ============================= */
+/* HISTORICOS Y LIBERTADORES 2016 */
+/* ============================= */
+
+.historicos, .libertadores2016 {
+    margin-top: 60px;
+    text-align: center;
+}
+
+.historicos h2, .libertadores2016 h2 {
+    color: white;
+    margin-bottom: 30px;
+}
+
+/* CARTA HISTORICA */
+.historica {
+    background: linear-gradient(180deg, #004d1a, #002b0f);
+}
+
+/* CARTA ESPECIAL LIBERTADORES */
+.especial {
+    background: linear-gradient(180deg, #1b5e20, #003300);
+    border: 3px solid gold;
+    position: relative;
+}
+
+/* RATING GRANDE */
+.rating {
+    position: absolute;
+    top: 15px;
+    left: 20px;
+    font-size: 26px;
+    font-weight: bold;
+}
+
+/* BADGE CAMPEON */
+.badge {
+    margin-top: 10px;
+    background: gold;
+    color: black;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+/* CARTA DT */
+.dt {
+    background: linear-gradient(180deg, #003300, #001a00);
+}

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="styles.css">
+    <title>Foro Atlético Nacional 💚</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<div class="overlay">
+
+<nav>
+    <div class="logo-container">
+        <img src="img/logo.png" alt="Logo Nacional">
+        <h2>Foro Verdolaga</h2>
+    </div>
+    <button onclick="logout()">Cerrar sesión</button>
+</nav>
+
+<section class="info-club">
+    <h2>🏆 Atlético Nacional</h2>
+    <p>Fundado en 1947 en Medellín, Colombia.</p>
+    <p>🏆 18 igas Colombianas</p>
+    <p>🏆 2 Copas Libertadores (1989 y 2016)</p>
+</section>
+
+<section class="historicos">
+    <h2>💚 Jugadores Históricos</h2>
+
+    <div class="cards-container">
+
+        <div class="card historica">
+            <img src="img/escobar.jpg" class="player-img">
+            <h3>Andrés Escobar</h3>
+            <p>🛡 Defensa</p>
+        </div>
+
+        <div class="card historica">
+            <img src="img/moreno.jpg" class="player-img">
+            <h3>Giovanni Moreno</h3>
+            <p>🎩 Volante Ofensivo</p>
+        </div>
+
+        <div class="card historica">
+            <img src="img/morelos.jpg" class="player-img">
+            <h3>Alfredo Morelos</h3>
+            <p>⚽ Delantero</p>
+        </div>
+
+        <div class="card historica">
+            <img src="img/pezzuti.jpg" class="player-img">
+            <h3>Gastón Pezzuti</h3>
+            <p>🧤 Portero</p>
+        </div>
+
+    </div>
+</section>
+
+<section class="libertadores2016">
+    <h2>🏆 Campeones Libertadores 2016</h2>
+
+    <div class="cards-container">
+
+        <!-- ARMANI -->
+        <div class="card especial">
+            <div class="rating">94</div>
+            <img src="img/armani.jpg" class="player-img">
+            <h3>Franco Armani</h3>
+            <p>🧤 Portero</p>
+            <div class="badge">🏆 2016</div>
+        </div>
+
+        <!-- MACNELLY -->
+        <div class="card especial">
+            <div class="rating">91</div>
+            <img src="img/macnelly.jpg" class="player-img">
+            <h3>Macnelly Torres</h3>
+            <p>🎩 Volante</p>
+            <div class="badge">🏆 2016</div>
+        </div>
+
+        <!-- LOBO GUERRA -->
+        <div class="card especial">
+            <div class="rating">90</div>
+            <img src="img/guerra.jpg" class="player-img">
+            <h3>Alejandro "Lobo" Guerra</h3>
+            <p>⚡ Extremo</p>
+            <div class="badge">🏆 2016</div>
+        </div>
+
+        <!-- HENRIQUEZ -->
+        <div class="card especial">
+            <div class="rating">92</div>
+            <img src="img/henriquez.jpg" class="player-img">
+            <h3>Alexis Henríquez</h3>
+            <p>🛡 Defensa</p>
+            <div class="badge">🏆 2016</div>
+        </div>
+
+        <!-- IBARGUEN -->
+        <div class="card especial">
+            <div class="rating">89</div>
+            <img src="img/ibarguen.jpg" class="player-img">
+            <h3>Andrés Ibargüen</h3>
+            <p>⚡ Extremo</p>
+            <div class="badge">🏆 2016</div>
+        </div>
+
+        <!-- BERRIO -->
+        <div class="card especial">
+            <div class="rating">88</div>
+            <img src="img/berrio.jpg" class="player-img">
+            <h3>Orlando Berrío</h3>
+            <p>⚡ Extremo</p>
+            <div class="badge">🏆 2016</div>
+        </div>
+
+        <!-- MARLOS -->
+        <div class="card especial">
+            <div class="rating">90</div>
+            <img src="img/marlos.jpg" class="player-img">
+            <h3>Marlos Moreno</h3>
+            <p>⚡ Extremo</p>
+            <div class="badge">🏆 2016</div>
+        </div>
+
+        <!-- BORJA -->
+        <div class="card especial">
+            <div class="rating">93</div>
+            <img src="img/borja.jpg" class="player-img">
+            <h3>Miguel Borja</h3>
+            <p>⚽ Delantero</p>
+            <div class="badge">🏆 2016</div>
+        </div>
+
+        <!-- DT OSORIO -->
+        <div class="card especial dt">
+            <div class="rating">95</div>
+            <img src="img/osorio.jpg" class="player-img">
+            <h3>Juan Carlos Osorio</h3>
+            <p>🎯 Director Técnico</p>
+            <div class="badge">🏆 2016</div>
+        </div>
+
+    </div>
+</section>
+
+<div class="container">
+
+    <textarea id="contenido" placeholder="¿Qué opinas del último partido?" rows="4"></textarea>
+    <button class="publicar-btn" onclick="crearPost()">Publicar</button>
+
+    <div id="feed"></div>
+
+</div>
+
+</div>
+
+<script>
+
+    const API = "http://127.0.0.1:5000/api";
+
+    function logout() {
+        localStorage.removeItem("token");
+        alert("Sesión cerrada");
+        window.location.href = "login.html";
+    }
+
+    async function obtenerPerfil() {
+
+    const token = localStorage.getItem("token");
+
+    const response = await fetch(API + "/perfil", {
+        headers: {
+            "Authorization": "Bearer " + token
+        }
+    });
+
+    const data = await response.json();
+
+    if (response.ok) {
+        document.querySelector("nav h2").innerText =
+            "Foro Verdolaga - " + data.nombre;
+    }
+}
+
+    async function crearPost() {
+
+        const contenido = document.getElementById("contenido").value;
+        const token = localStorage.getItem("token");
+
+        if (!token) {
+            alert("Debes iniciar sesión primero");
+            return;
+        }
+
+        const response = await fetch(API + "/posts", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + token
+            },
+            body: JSON.stringify({ contenido })
+        });
+
+        const data = await response.json();
+
+        alert(data.mensaje);
+
+        document.getElementById("contenido").value = "";
+
+        cargarPosts();
+    }
+
+    async function cargarPosts() {
+
+        const response = await fetch(API + "/posts");
+        const posts = await response.json();
+
+        const feed = document.getElementById("feed");
+        feed.innerHTML = "";
+
+        posts.reverse().forEach(post => {
+
+            const inicial = post.autor.charAt(0).toUpperCase();
+
+            const div = document.createElement("div");
+            div.classList.add("post");
+
+            div.innerHTML = `
+                 <div class="post-header">
+                    <div class="avatar">${inicial}</div>
+                    <div>
+                        <div class="autor">${post.autor}</div>
+                        <div class="fecha">${post.fecha || "Hincha Verdolaga"}</div>
+                    </div>
+                </div>
+
+                <div class="contenido">${post.contenido}</div>
+
+                <div class="acciones">
+                    <button onclick="likePost()">❤️</button>
+                    <button onclick="alert('Función comentario próximamente 💬')">💬</button>
+                </div>
+            `;
+
+            feed.appendChild(div);
+        });
+    }
+
+    cargarPosts();
+    obtenerPerfil();
+
+</script>
+
+</body>
+</html>
