@@ -73,7 +73,7 @@
 </div>
 
 <script>
-const API = "http://127.0.0.1:5000/api";
+const API = "/api";
 
 async function login() {
 
@@ -90,10 +90,7 @@ async function login() {
 
     if (response.ok) {
         localStorage.setItem("token", data.token);
-
-        // 🔥 REDIRIGE A POSTS
-        window.location.href = "posts.html";
-
+        window.location.href = "/posts";
     } else {
         document.getElementById("mensaje").innerText = data.error;
     }
