@@ -11,6 +11,10 @@ auth_bp = Blueprint("auth", __name__)
 def home():
     return render_template("index.html") 
 
+@auth_bp.route("/register", methods=["GET"])
+def register_page():
+    return render_template("register.html")
+
 
 @auth_bp.route("/register", methods=["POST"])
 def register():
