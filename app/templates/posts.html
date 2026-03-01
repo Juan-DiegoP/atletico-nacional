@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <title>Foro Atlético Nacional 💚</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
@@ -11,7 +11,7 @@
 
 <nav>
     <div class="logo-container">
-        <img src="img/logo.png" alt="Logo Nacional">
+        <img src="{{ url_for('static', filename='img/logo.png') }}">
         <h2>Foro Verdolaga</h2>
     </div>
     <button onclick="logout()">Cerrar sesión</button>
@@ -24,126 +24,101 @@
     <p>🏆 2 Copas Libertadores (1989 y 2016)</p>
 </section>
 
-<section class="historicos">
-    <h2>💚 Jugadores Históricos</h2>
+<div class="card historica">
+    <img src="{{ url_for('static', filename='img/escobar.jpg') }}" class="player-img">
+    <h3>Andrés Escobar</h3>
+    <p>🛡 Defensa</p>
+</div>
 
-    <div class="cards-container">
+<div class="card historica">
+    <img src="{{ url_for('static', filename='img/moreno.jpg') }}" class="player-img">
+    <h3>Giovanni Moreno</h3>
+    <p>🎩 Volante Ofensivo</p>
+</div>
 
-        <div class="card historica">
-            <img src="img/escobar.jpg" class="player-img">
-            <h3>Andrés Escobar</h3>
-            <p>🛡 Defensa</p>
-        </div>
+<div class="card historica">
+    <img src="{{ url_for('static', filename='img/morelos.jpg') }}" class="player-img">
+    <h3>Alfredo Morelos</h3>
+    <p>⚽ Delantero</p>
+</div>
 
-        <div class="card historica">
-            <img src="img/moreno.jpg" class="player-img">
-            <h3>Giovanni Moreno</h3>
-            <p>🎩 Volante Ofensivo</p>
-        </div>
+<div class="card historica">
+    <img src="{{ url_for('static', filename='img/pezzuti.jpg') }}" class="player-img">
+    <h3>Gastón Pezzuti</h3>
+    <p>🧤 Portero</p>
+</div>
 
-        <div class="card historica">
-            <img src="img/morelos.jpg" class="player-img">
-            <h3>Alfredo Morelos</h3>
-            <p>⚽ Delantero</p>
-        </div>
+<div class="card especial">
+    <div class="rating">94</div>
+    <img src="{{ url_for('static', filename='img/armani.jpg') }}" class="player-img">
+    <h3>Franco Armani</h3>
+    <p>🧤 Portero</p>
+    <div class="badge">🏆 2016</div>
+</div>
 
-        <div class="card historica">
-            <img src="img/pezzuti.jpg" class="player-img">
-            <h3>Gastón Pezzuti</h3>
-            <p>🧤 Portero</p>
-        </div>
+<div class="card especial">
+    <div class="rating">91</div>
+    <img src="{{ url_for('static', filename='img/macnelly.jpg') }}" class="player-img">
+    <h3>Macnelly Torres</h3>
+    <p>🎩 Volante</p>
+    <div class="badge">🏆 2016</div>
+</div>
 
-    </div>
-</section>
+<div class="card especial">
+    <div class="rating">90</div>
+    <img src="{{ url_for('static', filename='img/guerra.jpg') }}" class="player-img">
+    <h3>Alejandro "Lobo" Guerra</h3>
+    <p>⚡ Extremo</p>
+    <div class="badge">🏆 2016</div>
+</div>
 
-<section class="libertadores2016">
-    <h2>🏆 Campeones Libertadores 2016</h2>
+<div class="card especial">
+    <div class="rating">92</div>
+    <img src="{{ url_for('static', filename='img/henriquez.jpg') }}" class="player-img">
+    <h3>Alexis Henríquez</h3>
+    <p>🛡 Defensa</p>
+    <div class="badge">🏆 2016</div>
+</div>
 
-    <div class="cards-container">
+<div class="card especial">
+    <div class="rating">89</div>
+    <img src="{{ url_for('static', filename='img/ibarguen.jpg') }}" class="player-img">
+    <h3>Andrés Ibargüen</h3>
+    <p>⚡ Extremo</p>
+    <div class="badge">🏆 2016</div>
+</div>
 
-        <!-- ARMANI -->
-        <div class="card especial">
-            <div class="rating">94</div>
-            <img src="img/armani.jpg" class="player-img">
-            <h3>Franco Armani</h3>
-            <p>🧤 Portero</p>
-            <div class="badge">🏆 2016</div>
-        </div>
+<div class="card especial">
+    <div class="rating">88</div>
+    <img src="{{ url_for('static', filename='img/berrio.jpg') }}" class="player-img">
+    <h3>Orlando Berrío</h3>
+    <p>⚡ Extremo</p>
+    <div class="badge">🏆 2016</div>
+</div>
 
-        <!-- MACNELLY -->
-        <div class="card especial">
-            <div class="rating">91</div>
-            <img src="img/macnelly.jpg" class="player-img">
-            <h3>Macnelly Torres</h3>
-            <p>🎩 Volante</p>
-            <div class="badge">🏆 2016</div>
-        </div>
+<div class="card especial">
+    <div class="rating">90</div>
+    <img src="{{ url_for('static', filename='img/marlos.jpg') }}" class="player-img">
+    <h3>Marlos Moreno</h3>
+    <p>⚡ Extremo</p>
+    <div class="badge">🏆 2016</div>
+</div>
 
-        <!-- LOBO GUERRA -->
-        <div class="card especial">
-            <div class="rating">90</div>
-            <img src="img/guerra.jpg" class="player-img">
-            <h3>Alejandro "Lobo" Guerra</h3>
-            <p>⚡ Extremo</p>
-            <div class="badge">🏆 2016</div>
-        </div>
+<div class="card especial">
+    <div class="rating">93</div>
+    <img src="{{ url_for('static', filename='img/borja.jpg') }}" class="player-img">
+    <h3>Miguel Borja</h3>
+    <p>⚽ Delantero</p>
+    <div class="badge">🏆 2016</div>
+</div>
 
-        <!-- HENRIQUEZ -->
-        <div class="card especial">
-            <div class="rating">92</div>
-            <img src="img/henriquez.jpg" class="player-img">
-            <h3>Alexis Henríquez</h3>
-            <p>🛡 Defensa</p>
-            <div class="badge">🏆 2016</div>
-        </div>
-
-        <!-- IBARGUEN -->
-        <div class="card especial">
-            <div class="rating">89</div>
-            <img src="img/ibarguen.jpg" class="player-img">
-            <h3>Andrés Ibargüen</h3>
-            <p>⚡ Extremo</p>
-            <div class="badge">🏆 2016</div>
-        </div>
-
-        <!-- BERRIO -->
-        <div class="card especial">
-            <div class="rating">88</div>
-            <img src="img/berrio.jpg" class="player-img">
-            <h3>Orlando Berrío</h3>
-            <p>⚡ Extremo</p>
-            <div class="badge">🏆 2016</div>
-        </div>
-
-        <!-- MARLOS -->
-        <div class="card especial">
-            <div class="rating">90</div>
-            <img src="img/marlos.jpg" class="player-img">
-            <h3>Marlos Moreno</h3>
-            <p>⚡ Extremo</p>
-            <div class="badge">🏆 2016</div>
-        </div>
-
-        <!-- BORJA -->
-        <div class="card especial">
-            <div class="rating">93</div>
-            <img src="img/borja.jpg" class="player-img">
-            <h3>Miguel Borja</h3>
-            <p>⚽ Delantero</p>
-            <div class="badge">🏆 2016</div>
-        </div>
-
-        <!-- DT OSORIO -->
-        <div class="card especial dt">
-            <div class="rating">95</div>
-            <img src="img/osorio.jpg" class="player-img">
-            <h3>Juan Carlos Osorio</h3>
-            <p>🎯 Director Técnico</p>
-            <div class="badge">🏆 2016</div>
-        </div>
-
-    </div>
-</section>
+<div class="card especial dt">
+    <div class="rating">95</div>
+    <img src="{{ url_for('static', filename='img/osorio.jpg') }}" class="player-img">
+    <h3>Juan Carlos Osorio</h3>
+    <p>🎯 Director Técnico</p>
+    <div class="badge">🏆 2016</div>
+</div>
 
 <div class="container">
 
