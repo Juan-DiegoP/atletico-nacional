@@ -95,7 +95,7 @@ async function login() {
 
     if (response.ok) {
         localStorage.setItem("token", data.token);
-        window.location.href = "/api/posts";
+        window.location.href = "/posts";
     } else {
         document.getElementById("mensaje").innerText = data.error;
     }
