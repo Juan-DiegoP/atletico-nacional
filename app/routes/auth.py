@@ -76,3 +76,4 @@ def perfil():
         "nombre": user["nombre"],
         "email": user["email"]
     }
+

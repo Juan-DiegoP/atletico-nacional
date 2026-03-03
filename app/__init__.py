@@ -8,6 +8,7 @@ from .routes.auth import auth_bp
 from .routes.users import users_bp
 from .routes.posts import posts_bp
 from .routes.views import views_bp
+from .routes.videos import videos_bp
 
 load_dotenv()
 
@@ -28,3 +29,4 @@ app.register_blueprint(views_bp)
 app.register_blueprint(auth_bp, url_prefix="/api")
 app.register_blueprint(users_bp, url_prefix="/api")
 app.register_blueprint(posts_bp, url_prefix="/api")
+app.register_blueprint(videos_bp, url_prefix="/api")

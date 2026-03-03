@@ -1,0 +1,15 @@
+<form id="videoForm" enctype="multipart/form-data">
+    <input type="text" name="titulo" placeholder="Título del gol" required>
+    <input type="text" name="partido" placeholder="Partido" required>
+    <input type="number" name="minuto" placeholder="Minuto" required>
+    
+    <select name="categoria">
+        <option>Libertadores</option>
+        <option>Clasicos</option>
+        <option>Historicos</option>
+    </select>
+
+    <input type="file" name="video" accept="video/*" required>
+
+    <button type="submit">Subir Gol ⚽</button>
+</form>
