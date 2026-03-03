@@ -183,102 +183,105 @@ textarea {
     background: linear-gradient(180deg, #00c853, #004d1a);
 }
 
+/* CONTENEDOR */
 .cards-container {
     display: flex;
-    justify-content: center;
-    gap: 30px;
     flex-wrap: wrap;
+    justify-content: center;
+    gap: 35px;
+    margin-top: 40px;
 }
 
+/* CARTA BASE */
 .card {
-    width: 230px;
-    border-radius: 20px;
-    padding: 20px;
+    width: 220px;
+    height: 340px;
+    border-radius: 25px;
+    padding: 15px;
+    position: relative;
+    text-align: center;
     color: white;
-    box-shadow: 0px 12px 30px rgba(0,0,0,0.5);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: linear-gradient(145deg, #0f7a44, #004d1a);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+    transition: all 0.35s ease;
+    overflow: hidden;
 }
 
 .card:hover {
-    transform: translateY(-12px);
-    box-shadow: 0px 18px 40px rgba(0,0,0,0.7);
+    transform: scale(1.07);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.9);
 }
 
+/* HISTORICA */
+.historica {
+    background: linear-gradient(145deg, #003300, #001a00);
+    border: 2px solid #00c853;
+}
+
+/* ESPECIAL LIBERTADORES */
+.especial {
+    background: linear-gradient(145deg, #c9a227, #f5d76e);
+    color: #111;
+    border: 3px solid gold;
+}
+
+/* IMAGEN */
 .player-img {
     width: 100%;
-    height: 240px;
+    height: 170px;
     object-fit: cover;
     border-radius: 15px;
-    margin-bottom: 15px;
-}
-
-.posicion {
-    font-weight: bold;
     margin-bottom: 10px;
 }
 
+/* RATING */
+.rating {
+    position: absolute;
+    top: 12px;
+    left: 15px;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+/* POSICION */
+.posicion {
+    font-weight: bold;
+    margin-top: 5px;
+    font-size: 14px;
+}
+
+/* STATS */
 .stats {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    margin-top: 12px;
 }
 
 .stats span {
-    background: white;
+    background: rgba(255,255,255,0.9);
     color: #006a2b;
-    padding: 5px 8px;
-    border-radius: 10px;
-    font-weight: bold;
-    font-size: 13px;
-}
-
-/* ============================= */
-/* HISTORICOS Y LIBERTADORES 2016 */
-/* ============================= */
-
-.historicos, .libertadores2016 {
-    margin-top: 60px;
-    text-align: center;
-}
-
-.historicos h2, .libertadores2016 h2 {
-    color: white;
-    margin-bottom: 30px;
-}
-
-/* CARTA HISTORICA */
-.historica {
-    background: linear-gradient(180deg, #004d1a, #002b0f);
-}
-
-/* CARTA ESPECIAL LIBERTADORES */
-.especial {
-    background: linear-gradient(180deg, #1b5e20, #003300);
-    border: 3px solid gold;
-    position: relative;
-}
-
-/* RATING GRANDE */
-.rating {
-    position: absolute;
-    top: 15px;
-    left: 20px;
-    font-size: 26px;
-    font-weight: bold;
-}
-
-/* BADGE CAMPEON */
-.badge {
-    margin-top: 10px;
-    background: gold;
-    color: black;
-    padding: 5px 10px;
-    border-radius: 20px;
+    padding: 4px 6px;
+    border-radius: 8px;
     font-weight: bold;
     font-size: 12px;
 }
 
-/* CARTA DT */
+/* BADGE CAMPEON */
+.badge {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    background: gold;
+    color: black;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-weight: bold;
+    font-size: 11px;
+}
+
+/* DT */
 .dt {
-    background: linear-gradient(180deg, #003300, #001a00);
+    background: linear-gradient(145deg, #002b0f, #000d05);
+    border: 2px solid #00c853;
 }
