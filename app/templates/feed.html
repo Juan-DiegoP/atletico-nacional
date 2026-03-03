@@ -9,7 +9,7 @@
 <div class="feed" id="feed"></div>
 
 <!-- BOTÓN FLOTANTE -->
-<button class="upload-btn" onclick="abrirModal()">＋</button>
+<button class="upload-btn" id="openModalBtn">＋</button>
 
 <!-- MODAL SUBIR VIDEO -->
 <div class="modal" id="modal">
@@ -36,63 +36,74 @@
 </div>
 
 <script>
-const feed = document.getElementById("feed");
+document.addEventListener("DOMContentLoaded", () => {
 
-async function cargarVideos() {
-    const response = await fetch("/api/videos");
-    const videos = await response.json();
+    const feed = document.getElementById("feed");
+    const modal = document.getElementById("modal");
+    const openBtn = document.getElementById("openModalBtn");
+    const form = document.getElementById("videoForm");
 
-    feed.innerHTML = "";
+    // CARGAR VIDEOS
+    async function cargarVideos() {
+        const response = await fetch("/api/videos");
+        const videos = await response.json();
 
-    videos.forEach(video => {
-        const card = document.createElement("div");
-        card.classList.add("video-card");
+        feed.innerHTML = "";
 
-        card.innerHTML = `
-            <video src="${video.video_url}" autoplay muted loop></video>
-            <div class="info">
-                <h3>⚽ ${video.titulo}</h3>
-                <p>🏟 ${video.partido}</p>
-                <p>⏱ Min ${video.minuto}</p>
-                <p>👤 ${video.autor}</p>
-            </div>
-        `;
+        videos.forEach(video => {
+            const card = document.createElement("div");
+            card.classList.add("video-card");
 
-        feed.appendChild(card);
-    });
-}
+            card.innerHTML = `
+                <video src="${video.video_url}" autoplay muted loop></video>
+                <div class="info">
+                    <h3>⚽ ${video.titulo}</h3>
+                    <p>🏟 ${video.partido}</p>
+                    <p>⏱ Min ${video.minuto}</p>
+                    <p>👤 ${video.autor}</p>
+                </div>
+            `;
 
-cargarVideos();
+            feed.appendChild(card);
+        });
+    }
 
-// MODAL
-function abrirModal() {
-    document.getElementById("modal").style.display = "flex";
-}
-
-function cerrarModal() {
-    document.getElementById("modal").style.display = "none";
-}
-
-// SUBIR VIDEO
-document.getElementById("videoForm").addEventListener("submit", async (e) => {
-    e.preventDefault();
-
-    const token = localStorage.getItem("token");
-    const formData = new FormData(e.target);
-
-    const response = await fetch("/api/videos", {
-        method: "POST",
-        headers: {
-            "Authorization": "Bearer " + token
-        },
-        body: formData
-    });
-
-    const data = await response.json();
-    alert(data.mensaje || data.error);
-
-    cerrarModal();
     cargarVideos();
+
+    // ABRIR MODAL
+    openBtn.addEventListener("click", () => {
+        modal.style.display = "flex";
+    });
+
+    // CERRAR MODAL AL HACER CLICK FUERA
+    modal.addEventListener("click", (e) => {
+        if (e.target === modal) {
+            modal.style.display = "none";
+        }
+    });
+
+    // SUBIR VIDEO
+    form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const token = localStorage.getItem("token");
+        const formData = new FormData(form);
+
+        const response = await fetch("/api/videos", {
+            method: "POST",
+            headers: {
+                "Authorization": "Bearer " + token
+            },
+            body: formData
+        });
+
+        const data = await response.json();
+        alert(data.mensaje || data.error);
+
+        modal.style.display = "none";
+        cargarVideos();
+    });
+
 });
 </script>
 
