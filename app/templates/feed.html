@@ -9,7 +9,7 @@
 <div class="feed" id="feed"></div>
 
 <!-- BOTÓN FLOTANTE -->
-<button class="upload-btn" id="openModalBtn">＋</button>
+<button class="upload-btn" id="openModalBtn">+</button>
 
 <!-- MODAL SUBIR VIDEO -->
 <div class="modal" id="modal">
@@ -37,6 +37,7 @@
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {
+    console.log("JS cargado")
 
     const feed = document.getElementById("feed");
     const modal = document.getElementById("modal");
@@ -72,6 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // ABRIR MODAL
     openBtn.addEventListener("click", () => {
+        console.log("Boton presionado");
         modal.style.display = "flex";
     });
 
