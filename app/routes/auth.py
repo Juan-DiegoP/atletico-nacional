@@ -59,7 +59,7 @@ def login():
 
     return jsonify({
         "mensaje": "Login exitoso 💚",
-        "token": access_token
+        "access_token": access_token
     })
 
 @auth_bp.route("/perfil", methods=["GET"])
