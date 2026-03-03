@@ -110,3 +110,21 @@ body {
     font-weight: bold;
     cursor: pointer;
 }
+
+.feed {
+    height: 100vh;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+}
+
+.video-card {
+    height: 100vh;
+    scroll-snap-align: start;
+    position: relative;
+}
+
+.video-card video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}

@@ -37,12 +37,32 @@
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {
-    console.log("JS cargado")
 
     const feed = document.getElementById("feed");
     const modal = document.getElementById("modal");
     const openBtn = document.getElementById("openModalBtn");
     const form = document.getElementById("videoForm");
+
+    // 🔥 OBSERVER FUERA
+    function setupVideoObserver() {
+        const videos = document.querySelectorAll("video");
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                const video = entry.target;
+
+                if (entry.isIntersecting) {
+                    video.play();
+                } else {
+                    video.pause();
+                }
+            });
+        }, { threshold: 0.7 });
+
+        videos.forEach(video => {
+            observer.observe(video);
+        });
+    }
 
     // CARGAR VIDEOS
     async function cargarVideos() {
@@ -56,7 +76,7 @@ document.addEventListener("DOMContentLoaded", () => {
             card.classList.add("video-card");
 
             card.innerHTML = `
-                <video src="${video.video_url}" autoplay muted loop></video>
+                <video src="${video.video_url}" muted playsinline></video>
                 <div class="info">
                     <h3>⚽ ${video.titulo}</h3>
                     <p>🏟 ${video.partido}</p>
@@ -67,16 +87,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
             feed.appendChild(card);
         });
+
+        setupVideoObserver(); // 🔥 aquí se llama
     }
 
     cargarVideos();
 
     // ABRIR MODAL
     openBtn.addEventListener("click", () => {
-        document.getElementById("modal").style.display = "flex";
+        modal.style.display = "flex";
     });
 
-    // CERRAR MODAL AL HACER CLICK FUERA
+    // CERRAR MODAL
     modal.addEventListener("click", (e) => {
         if (e.target === modal) {
             modal.style.display = "none";
