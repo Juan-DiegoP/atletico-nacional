@@ -8,13 +8,40 @@
 
 <div class="feed" id="feed"></div>
 
+<!-- BOTÓN FLOTANTE -->
+<button class="upload-btn" onclick="abrirModal()">＋</button>
+
+<!-- MODAL SUBIR VIDEO -->
+<div class="modal" id="modal">
+    <div class="modal-content">
+        <h2>Subir Gol ⚽</h2>
+
+        <form id="videoForm" enctype="multipart/form-data">
+            <input type="text" name="titulo" placeholder="Título" required>
+            <input type="text" name="partido" placeholder="Partido" required>
+            <input type="number" name="minuto" placeholder="Minuto" required>
+            
+            <select name="categoria">
+                <option>Libertadores</option>
+                <option>Clasicos</option>
+                <option>Historicos</option>
+            </select>
+
+            <input type="file" name="video" accept="video/*" required>
+
+            <button type="submit">Subir</button>
+            <button type="button" onclick="cerrarModal()">Cancelar</button>
+        </form>
+    </div>
+</div>
+
 <script>
+const feed = document.getElementById("feed");
 
 async function cargarVideos() {
     const response = await fetch("/api/videos");
     const videos = await response.json();
 
-    const feed = document.getElementById("feed");
     feed.innerHTML = "";
 
     videos.forEach(video => {
@@ -23,7 +50,6 @@ async function cargarVideos() {
 
         card.innerHTML = `
             <video src="${video.video_url}" autoplay muted loop></video>
-            
             <div class="info">
                 <h3>⚽ ${video.titulo}</h3>
                 <p>🏟 ${video.partido}</p>
@@ -38,6 +64,36 @@ async function cargarVideos() {
 
 cargarVideos();
 
+// MODAL
+function abrirModal() {
+    document.getElementById("modal").style.display = "flex";
+}
+
+function cerrarModal() {
+    document.getElementById("modal").style.display = "none";
+}
+
+// SUBIR VIDEO
+document.getElementById("videoForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const token = localStorage.getItem("token");
+    const formData = new FormData(e.target);
+
+    const response = await fetch("/api/videos", {
+        method: "POST",
+        headers: {
+            "Authorization": "Bearer " + token
+        },
+        body: formData
+    });
+
+    const data = await response.json();
+    alert(data.mensaje || data.error);
+
+    cerrarModal();
+    cargarVideos();
+});
 </script>
 
 </body>
