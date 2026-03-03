@@ -1,5 +1,5 @@
 import os
-from flask import Blueprint, request, current_app
+from flask import Blueprint, request
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from werkzeug.utils import secure_filename
 from bson import ObjectId
@@ -7,7 +7,8 @@ from ..extensions import mongo
 
 videos_bp = Blueprint("videos", __name__)
 
-UPLOAD_FOLDER = "app/static/uploads"
+# Ruta absoluta segura
+UPLOAD_FOLDER = os.path.join("app", "static", "uploads")
 
 @videos_bp.route("/videos", methods=["POST"])
 @jwt_required()
@@ -21,6 +22,10 @@ def subir_video():
 
     if video.filename == "":
         return {"error": "Nombre de archivo vacío"}, 400
+
+    # 🔥 Crear carpeta si no existe (SOLUCIÓN AL 500)
+    if not os.path.exists(UPLOAD_FOLDER):
+        os.makedirs(UPLOAD_FOLDER)
 
     filename = secure_filename(video.filename)
     filepath = os.path.join(UPLOAD_FOLDER, filename)
