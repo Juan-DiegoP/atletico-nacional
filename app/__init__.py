@@ -22,7 +22,7 @@ mongo.init_app(app)
 jwt.init_app(app)
 bcrypt.init_app(app)
 
-# Registrar blueprints
+# Registro blueprints
 
 app.register_blueprint(views_bp) 
 app.register_blueprint(auth_bp, url_prefix="/api")

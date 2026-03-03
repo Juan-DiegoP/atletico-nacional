@@ -10,3 +10,9 @@ def posts_page():
 @views_bp.route("/login")
 def login_page():
     return render_template("login.html")
+
+from flask import render_template
+
+@views_bp.route("/feed")
+def feed():
+    return render_template("feed.html")
