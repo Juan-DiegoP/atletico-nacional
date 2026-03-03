@@ -1,287 +1,58 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* BODY */
 body {
+    background: black;
     font-family: Arial, sans-serif;
-    margin: 0;
-    background: url("img/fondo.jpg") no-repeat center center fixed;
-    background-size: cover;
-}
-
-.overlay {
-    background: rgba(0, 0, 0, 0.6);
-    min-height: 100vh;
-}
-
-/* NAVBAR */
-nav {
-    background-color: #006a2b;
     color: white;
-    padding: 15px 30px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
 }
 
-.logo-container {
-    display: flex;
-    align-items: center;
-    gap: 15px;
+/* FEED */
+.feed {
+    height: 100vh;
 }
 
-.logo-container img {
-    height: 45px;
-}
-
-nav h2 {
-    margin: 0;
-}
-
-nav button {
-    background-color: white;
-    color: #006a2b;
-    border: none;
-    padding: 8px 15px;
-    border-radius: 20px;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-nav button:hover {
-    background-color: #c8e6c9;
-}
-
-.container {
-    width: 90%;
-    max-width: 600px;
-    margin: 30px auto;
-}
-
-textarea {
+/* CADA VIDEO */
+.video-card {
+    height: 100vh;
     width: 100%;
-    padding: 12px;
-    border-radius: 10px;
-    border: none;
-    resize: none;
-}
-
-.publicar-btn {
-    background-color: #00c853;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 20px;
-    cursor: pointer;
-    margin-top: 10px;
-}
-
-.publicar-btn:hover {
-    background-color: #009624;
-}
-
-.post {
-    background-color: white;
-    padding: 15px;
-    border-radius: 20px;
-    margin-top: 20px;
-    box-shadow: 0px 8px 20px rgba(0,0,0,0.2);
-    animation: fadeIn 0.4s ease-in-out;
-    transition: transform 0.2s ease;
-}
-
-.post:hover {
-    transform: scale(1.02);
-}
-
-.post-header {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: #006a2b;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    font-size: 18px;
-}
-
-.autor {
-    font-weight: bold;
-    color: #006a2b;
-}
-
-.fecha {
-    font-size: 12px;
-    color: gray;
-}
-
-.contenido {
-    margin-top: 10px;
-}
-
-.acciones {
-    margin-top: 10px;
-    display: flex;
-    gap: 10px;
-}
-
-.acciones button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 18px;
-}
-
-.bottom-nav {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    background-color: #006a2b;
-    display: flex;
-    justify-content: space-around;
-    padding: 10px 0;
-}
-
-.bottom-nav button {
-    background: none;
-    border: none;
-    color: white;
-    font-size: 20px;
-    cursor: pointer;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* SECCION JUGADORES */
-.jugadores-section {
-    text-align: center;
-    margin-top: 40px;
-}
-
-.jugadores-section h2 {
-    color: white;
-    margin-bottom: 20px;
-}
-
-.info-club {
-    background-color: rgba(0,0,0,0.7);
-    padding: 20px;
-    text-align: center;
-    color: white;
-}
-
-/* LEYENDAS */
-.leyenda {
-    border: 3px solid gold;
-    background: linear-gradient(180deg, #00c853, #004d1a);
-}
-
-/* CONTENEDOR */
-.cards-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 35px;
-    margin-top: 40px;
-}
-
-/* CARTA BASE */
-.card {
-    width: 220px;
-    height: 340px;
-    border-radius: 25px;
-    padding: 15px;
     position: relative;
-    text-align: center;
-    color: white;
-    background: linear-gradient(145deg, #0f7a44, #004d1a);
-    box-shadow: 0 15px 35px rgba(0,0,0,0.6);
-    transition: all 0.35s ease;
-    overflow: hidden;
+    scroll-snap-align: start;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.card:hover {
-    transform: scale(1.07);
-    box-shadow: 0 20px 50px rgba(0,0,0,0.9);
-}
-
-/* HISTORICA */
-.historica {
-    background: linear-gradient(145deg, #003300, #001a00);
-    border: 2px solid #00c853;
-}
-
-/* ESPECIAL LIBERTADORES */
-.especial {
-    background: linear-gradient(145deg, #c9a227, #f5d76e);
-    color: #111;
-    border: 3px solid gold;
-}
-
-/* IMAGEN */
-.player-img {
+/* VIDEO */
+.video-card video {
+    height: 100vh;
     width: 100%;
-    height: 170px;
     object-fit: cover;
-    border-radius: 15px;
-    margin-bottom: 10px;
 }
 
-/* RATING */
-.rating {
+/* INFO SUPERPUESTA */
+.info {
     position: absolute;
-    top: 12px;
-    left: 15px;
-    font-size: 28px;
-    font-weight: bold;
+    bottom: 80px;
+    left: 20px;
+    background: linear-gradient(transparent, rgba(0,0,0,0.8));
+    padding: 20px;
+    border-radius: 15px;
 }
 
-/* POSICION */
-.posicion {
-    font-weight: bold;
-    margin-top: 5px;
+.info h3 {
+    font-size: 22px;
+    margin-bottom: 5px;
+}
+
+.info p {
     font-size: 14px;
-}
-
-/* STATS */
-.stats {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 6px;
-    margin-top: 12px;
-}
-
-.stats span {
-    background: rgba(255,255,255,0.9);
-    color: #006a2b;
-    padding: 4px 6px;
-    border-radius: 8px;
-    font-weight: bold;
-    font-size: 12px;
-}
-
-/* BADGE CAMPEON */
-.badge {
-    position: absolute;
-    bottom: 12px;
-    right: 12px;
-    background: gold;
-    color: black;
-    padding: 5px 10px;
-    border-radius: 15px;
-    font-weight: bold;
-    font-size: 11px;
-}
-
-/* DT */
-.dt {
-    background: linear-gradient(145deg, #002b0f, #000d05);
-    border: 2px solid #00c853;
-}
+    opacity: 0.9;
+} 

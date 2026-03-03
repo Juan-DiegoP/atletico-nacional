@@ -1,15 +1,44 @@
-<form id="videoForm" enctype="multipart/form-data">
-    <input type="text" name="titulo" placeholder="Título del gol" required>
-    <input type="text" name="partido" placeholder="Partido" required>
-    <input type="number" name="minuto" placeholder="Minuto" required>
-    
-    <select name="categoria">
-        <option>Libertadores</option>
-        <option>Clasicos</option>
-        <option>Historicos</option>
-    </select>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>GolClub ⚽</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
 
-    <input type="file" name="video" accept="video/*" required>
+<div class="feed" id="feed"></div>
 
-    <button type="submit">Subir Gol ⚽</button>
-</form>
+<script>
+
+async function cargarVideos() {
+    const response = await fetch("/api/videos");
+    const videos = await response.json();
+
+    const feed = document.getElementById("feed");
+    feed.innerHTML = "";
+
+    videos.forEach(video => {
+        const card = document.createElement("div");
+        card.classList.add("video-card");
+
+        card.innerHTML = `
+            <video src="${video.video_url}" autoplay muted loop></video>
+            
+            <div class="info">
+                <h3>⚽ ${video.titulo}</h3>
+                <p>🏟 ${video.partido}</p>
+                <p>⏱ Min ${video.minuto}</p>
+                <p>👤 ${video.autor}</p>
+            </div>
+        `;
+
+        feed.appendChild(card);
+    });
+}
+
+cargarVideos();
+
+</script>
+
+</body>
+</html>
