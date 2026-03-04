@@ -2,7 +2,7 @@ import os
 import cloudinary
 import cloudinary.uploader
 
-from flask import Blueprint, request
+from flask import Blueprint, request, jsonify
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from bson import ObjectId
 from ..extensions import mongo
@@ -71,4 +71,4 @@ def obtener_videos():
             "video_url": video.get("video_url")
         })
 
-    return videos
+    return jsonify(videos)
