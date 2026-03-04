@@ -9,11 +9,6 @@
 <body>
 
 <div class="phone-container">
-    <div class="feed" id="feed"></div>
-    <div class="phone-container">
-<body>
-
-<div class="phone-container">
 
     <!-- NOTCH -->
     <div class="notch"></div>
@@ -47,8 +42,8 @@
 
             <select name="categoria">
                 <option>Libertadores</option>
-                <option>Clasicos</option>
-                <option>Historicos</option>
+                <option>Clásicos</option>
+                <option>Históricos</option>
             </select>
 
             <input type="file" name="video" accept="video/*" required>
@@ -57,5 +52,8 @@
         </form>
     </div>
 </div>
+
+<script src="{{ url_for('static', filename='app.js') }}"></script>
+
 </body>
 </html>
