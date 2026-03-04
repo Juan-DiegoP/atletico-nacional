@@ -7,40 +7,65 @@
 
 /* BODY */
 body {
-    background: black;
+    margin: 0;
+    background: #0f0f0f;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
     font-family: Arial, sans-serif;
-    color: white;
-    overflow-y: scroll;
-    scroll-snap-type: y mandatory;
+}
+
+/* CONTENEDOR TIPO CELULAR */
+.phone-container {
+    width: 390px;
+    height: 800px;
+    background: black;
+    border-radius: 40px;
+    overflow: hidden;
+    box-shadow: 0 0 50px rgba(0,0,0,0.9);
+    position: relative;
+    border: 10px solid #1a1a1a;
+}
+
+/* NOTCH */
+.notch {
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 180px;
+    height: 28px;
+    background: #111;
+    border-radius: 20px;
+    z-index: 10;
 }
 
 /* FEED */
 .feed {
-    height: 100vh;
+    height: 100%;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
 }
 
-/* CADA VIDEO */
+/* VIDEO CARD */
 .video-card {
-    height: 100vh;
-    width: 100%;
-    position: relative;
+    height: 100%;
     scroll-snap-align: start;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    position: relative;
 }
 
 /* VIDEO */
 .video-card video {
-    height: 100vh;
     width: 100%;
+    height: 100%;
     object-fit: cover;
 }
 
 /* INFO SUPERPUESTA */
 .info {
     position: absolute;
-    bottom: 80px;
+    bottom: 100px;
     left: 20px;
     background: linear-gradient(transparent, rgba(0,0,0,0.8));
     padding: 20px;
@@ -55,12 +80,12 @@ body {
 .info p {
     font-size: 14px;
     opacity: 0.9;
-} 
+}
 
-/* BOTÓN FLOTANTE */
+/* BOTÓN SUBIR */
 .upload-btn {
     position: absolute;
-    bottom: 20px;
+    bottom: 80px;
     right: 20px;
     background: #00ff88;
     color: black;
@@ -70,16 +95,31 @@ body {
     height: 55px;
     border-radius: 50%;
     cursor: pointer;
-    z-index: 1000;
+    z-index: 20;
+}
+
+/* BARRA INFERIOR */
+.bottom-bar {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    background: rgba(0,0,0,0.9);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: white;
+    font-size: 22px;
+    z-index: 15;
 }
 
 /* MODAL */
 .modal {
     display: none;
     position: fixed;
-    inset: 0;                 /* ocupa toda la pantalla */
-    background: rgba(0,0,0,0.95);
-    z-index: 99999;           /* súper arriba */
+    inset: 0;
+    background: rgba(0,0,0,0.9);
+    z-index: 9999;
     justify-content: center;
     align-items: center;
 }
@@ -111,148 +151,7 @@ body {
     cursor: pointer;
 }
 
-.feed {
-    height: 100vh;
-    overflow-y: scroll;
-    scroll-snap-type: y mandatory;
-}
-
-.video-card {
-    height: 100vh;
-    scroll-snap-align: start;
-    position: relative;
-}
-
-.video-card video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-/* FONDO GENERAL */
-body {
-    margin: 0;
-    background: #0f0f0f;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
-
-/* CONTENEDOR TIPO CELULAR */
-.phone-container {
-    width: 390px;              /* ancho tipo iPhone */
-    height: 800px;             /* alto fijo */
-    background: black;
-    border-radius: 35px;
-    overflow: hidden;
-    box-shadow: 0 0 40px rgba(0,0,0,0.8);
-    position: relative;
-    border: 8px solid #222;
-}
-
-/* FEED DENTRO DEL CELULAR */
-.feed {
-    height: 100%;
-    overflow-y: scroll;
-    scroll-snap-type: y mandatory;
-}
-
-/* CADA VIDEO */
-.video-card {
-    height: 100%;
-    scroll-snap-align: start;
-    position: relative;
-}
-
-/* VIDEO */
-.video-card video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-body {
-    margin: 0;
-    background: #0f0f0f;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
-
-/* CELULAR */
-.phone-container {
-    width: 390px;
-    height: 800px;
-    background: black;
-    border-radius: 40px;
-    overflow: hidden;
-    box-shadow: 0 0 50px rgba(0,0,0,0.9);
-    position: relative;
-    border: 10px solid #1a1a1a;
-}
-
-.notch {
-    position: absolute;
-    top: 8px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 180px;
-    height: 28px;
-    background: #111;
-    border-radius: 20px;
-    z-index: 10;
-}
-
-.feed {
-    height: 100%;
-    overflow-y: scroll;
-    scroll-snap-type: y mandatory;
-}
-
-.video-card {
-    height: 100%;
-    scroll-snap-align: start;
-    position: relative;
-}
-
-.video-card video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.upload-btn {
-    position: absolute;
-    bottom: 80px;
-    right: 20px;
-    background: #00ff88;
-    color: black;
-    border: none;
-    font-size: 26px;
-    width: 55px;
-    height: 55px;
-    border-radius: 50%;
-    cursor: pointer;
-    z-index: 20;
-}
-
-.bottom-bar {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 60px;
-    background: rgba(0,0,0,0.9);
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    color: white;
-    font-size: 22px;
-    z-index: 15;
-}
-
-/* SI ES CELULAR REAL */
+/* RESPONSIVE REAL (CELULAR) */
 @media (max-width: 768px) {
 
     body {
