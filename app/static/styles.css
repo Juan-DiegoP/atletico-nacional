@@ -171,3 +171,106 @@ body {
     height: 100%;
     object-fit: cover;
 }
+
+body {
+    margin: 0;
+    background: #0f0f0f;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* CELULAR */
+.phone-container {
+    width: 390px;
+    height: 800px;
+    background: black;
+    border-radius: 40px;
+    overflow: hidden;
+    box-shadow: 0 0 50px rgba(0,0,0,0.9);
+    position: relative;
+    border: 10px solid #1a1a1a;
+}
+
+.notch {
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 180px;
+    height: 28px;
+    background: #111;
+    border-radius: 20px;
+    z-index: 10;
+}
+
+.feed {
+    height: 100%;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+}
+
+.video-card {
+    height: 100%;
+    scroll-snap-align: start;
+    position: relative;
+}
+
+.video-card video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.upload-btn {
+    position: absolute;
+    bottom: 80px;
+    right: 20px;
+    background: #00ff88;
+    color: black;
+    border: none;
+    font-size: 26px;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 20;
+}
+
+.bottom-bar {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    background: rgba(0,0,0,0.9);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: white;
+    font-size: 22px;
+    z-index: 15;
+}
+
+/* SI ES CELULAR REAL */
+@media (max-width: 768px) {
+
+    body {
+        background: black;
+        height: auto;
+        align-items: stretch;
+    }
+
+    .phone-container {
+        width: 100%;
+        height: 100vh;
+        border-radius: 0;
+        border: none;
+        box-shadow: none;
+    }
+
+    .notch {
+        display: none;
+    }
+}
+
